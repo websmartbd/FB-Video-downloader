@@ -132,7 +132,7 @@
 <div class="text-left space-y-4">
   ${data.thumbnail ? `
     <div class="flex justify-center">
-      <div class="w-[300px] h-[400px] rounded-lg shadow-lg overflow-hidden">
+      <div class=" h-[400px] rounded-lg shadow-lg overflow-hidden">
         <img src="${data.thumbnail}" alt="Facebook video thumbnail" class="object-cover w-full h-full">
       </div>
     </div>
@@ -140,10 +140,10 @@
   <h2 class="text-lg font-bold text-green-400">✅ ${data.title || "Video Found"}</h2>
   <div class="flex flex-wrap gap-4 mt-4">
     ${data.links?.hd ? `
-      <a href="${data.links.hd}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">⬇ HD</a>
+      <a href="${data.links.hd}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">⬇ Download in HD</a>
     ` : ""}
     ${data.links?.sd ? `
-      <a href="${data.links.sd}" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md transition">⬇ SD</a>
+      <a href="${data.links.sd}" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md transition">⬇ Download in SD</a>
     ` : ""}
   </div>
 </div>
