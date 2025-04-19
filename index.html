@@ -64,7 +64,7 @@
 </head>
 <body class="dark bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex items-center justify-center p-6 text-white">
 
-  <div class="w-full max-w-2xl p-8 rounded-3xl shadow-xl bg-glass backdrop-blur-md border border-white/10 animate-fadeIn">
+  <div class="w-full max-w-2xl">
     
     <div class="text-center mb-6">
       <h1 class="text-4xl font-bold text-green-400">📥 Facebook Video Downloader</h1>
@@ -129,18 +129,27 @@
       }).then(res => res.json()).then(data => {
         if (data.success) {
           output.innerHTML = `
-            <div class="text-left space-y-4">
-              ${data.thumbnail ? `<img src="${data.thumbnail}" alt="Facebook video thumbnail" class="rounded-lg object-cover shadow-lg w-full h-auto aspect-[4/5]">` : ""}
-              <h2 class="text-lg font-bold text-green-400">✅ ${data.title || "Video Found"}</h2>
-              <div class="flex flex-wrap gap-4 mt-4">
-                ${data.links?.hd ? `
-                  <a href="${data.links.hd}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">⬇ HD</a>
-                ` : ""}
-                ${data.links?.sd ? `
-                  <a href="${data.links.sd}" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md transition">⬇ SD</a>
-                ` : ""}
-              </div>
-            </div>
+<div class="text-left space-y-4">
+  ${data.thumbnail ? `
+    <div class="flex justify-center">
+      <div class="w-[300px] h-[400px] rounded-lg shadow-lg overflow-hidden">
+        <img src="${data.thumbnail}" alt="Facebook video thumbnail" class="object-cover w-full h-full">
+      </div>
+    </div>
+  ` : ""}
+  <h2 class="text-lg font-bold text-green-400">✅ ${data.title || "Video Found"}</h2>
+  <div class="flex flex-wrap gap-4 mt-4">
+    ${data.links?.hd ? `
+      <a href="${data.links.hd}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">⬇ HD</a>
+    ` : ""}
+    ${data.links?.sd ? `
+      <a href="${data.links.sd}" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md transition">⬇ SD</a>
+    ` : ""}
+  </div>
+</div>
+
+</div>
+
           `;
         } else {
           output.innerHTML = `<p class="text-red-400 font-medium">❌ ${data.message || "Video not found!"}</p>`;
