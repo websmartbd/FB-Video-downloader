@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Video Downloader - Fast & Free</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download Facebook videos quickly and easily with our free Facebook Video Downloader tool. Paste the video URL and get HD or SD quality downloads.">
+  <meta name="keywords" content="Facebook Video Downloader, download Facebook videos, free video downloader, FB video download, online video downloader">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sscresult.site/downloade.html">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Facebook Video Downloader - Fast & Free">
+  <meta property="og:description" content="Easily download Facebook videos in HD or SD quality with our free online tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sscresult.site/downloade.html">
+  <meta property="og:image" content="https://sscresult.site/images/facebook-video-downloader.jpg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Facebook Video Downloader - Fast & Free">
+  <meta name="twitter:description" content="Easily download Facebook videos in HD or SD quality with our free online tool.">
+  <meta name="twitter:image" content="https://sscresult.site/images/facebook-video-downloader.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            glass: 'rgba(255, 255, 255, 0.05)'
+          },
+          backdropBlur: {
+            xs: '2px'
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.5s ease-in-out'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Facebook Video Downloader",
+    "operatingSystem": "Web",
+    "applicationCategory": "Utility",
+    "description": "A free online tool to download Facebook videos in HD or SD quality by pasting the video URL.",
+    "url": "https://sscresult.site/downloade.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body class="dark bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex items-center justify-center p-6 text-white">
+
+  <div class="w-full max-w-2xl p-8 rounded-3xl shadow-xl bg-glass backdrop-blur-md border border-white/10 animate-fadeIn">
+    
+    <div class="text-center mb-6">
+      <h1 class="text-4xl font-bold text-green-400">📥 Facebook Video Downloader</h1>
+      <p class="text-gray-400 text-sm mt-1">Paste the Facebook video URL and download it easily.</p>
+    </div>
+
+    <!-- Input Area -->
+    <div class="flex items-center bg-black/30 border border-green-700 rounded-lg overflow-hidden shadow-md">
+      <input id="url" type="text" placeholder="Paste Facebook video URL..." class="flex-1 px-4 py-3 bg-transparent focus:outline-none placeholder:text-gray-400 text-sm" onkeypress="handleKey(event)">
+      <button onclick="downloadVideo()" class="px-6 py-3 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold transition">Download</button>
+    </div>
+
+    <!-- Clear Button -->
+    <div class="text-right mt-2">
+      <button onclick="clearFields()" class="text-xs text-gray-400 hover:underline">🧹 Clear</button>
+    </div>
+
+    <!-- Output -->
+    <div id="output" class="mt-6 p-4 bg-white/5 rounded-lg shadow-sm min-h-[100px] animate-fadeIn text-center text-sm text-gray-300">
+      <p class="opacity-60">Your result will appear here...</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-xs text-gray-600 mt-6">
+      🔗 Powered by <a href="https://sscresult.site/fbdl.php" class="underline text-green-400">SSC Result Tools</a> | 
+      <a href="https://sscresult.site/about.html" class="underline text-green-400">About</a> | 
+      <a href="https://sscresult.site/privacy.html" class="underline text-green-400">Privacy Policy</a>
+    </div>
+  </div>
+
+  <script>
+    function handleKey(e) {
+      if (e.key === 'Enter') downloadVideo();
+    }
+
+    function getEncryptedAPI() {
+      const a = [104, 116, 116, 112, 115, 58, 47, 47, 99, 100, 110, 46, 115, 115, 99, 114, 101, 115, 117, 108, 116, 46, 115, 105, 116, 101, 47, 102, 98, 46, 106, 115, 111, 110, 63, 104, 106];
+      return a.map(c => String.fromCharCode(c)).join("");
+    }
+
+    function clearFields() {
+      document.getElementById("url").value = "";
+      document.getElementById("output").innerHTML = `<p class="opacity-60">Your result will appear here...</p>`;
+    }
+
+    function downloadVideo() {
+      const url = document.getElementById("url").value.trim();
+      const output = document.getElementById("output");
+
+      if (!url) {
+        output.innerHTML = '<p class="text-red-400 font-medium animate-pulse">⚠️ Please enter a Facebook video URL.</p>';
+        return;
+      }
+
+      output.innerHTML = "<p class='text-blue-400 animate-pulse'>⏳ Fetching video details...</p>";
+      const api = getEncryptedAPI();
+
+      fetch(api, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "url=" + encodeURIComponent(url)
+      }).then(res => res.json()).then(data => {
+        if (data.success) {
+          output.innerHTML = `
+            <div class="text-left space-y-4">
+              ${data.thumbnail ? `<img src="${data.thumbnail}" alt="Facebook video thumbnail" class="rounded-lg w-full object-cover shadow-lg">` : ""}
+              <h2 class="text-lg font-bold text-green-400">✅ ${data.title || "Video Found"}</h2>
+              <div class="flex flex-wrap gap-4 mt-4">
+                ${data.links?.hd ? `
+                  <a href="${data.links.hd}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">⬇ HD</a>
+                ` : ""}
+                ${data.links?.sd ? `
+                  <a href="${data.links.sd}" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md transition">⬇ SD</a>
+                ` : ""}
+              </div>
+            </div>
+          `;
+        } else {
+          output.innerHTML = `<p class="text-red-400 font-medium">❌ ${data.message || "Video not found!"}</p>`;
+        }
+      }).catch(err => {
+        output.innerHTML = '<p class="text-red-400 font-medium">❌ Something went wrong!</p>';
+        console.error(err);
+      });
+    }
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'932f54e62e9ce592',t:'MTc0NTA5NjQyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
